@@ -846,7 +846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   block1: {fileID: 1887085291}
   block2: {fileID: 1390294315}
-  velocity: 10
+  velocity: -30
 --- !u!212 &1945719503
 SpriteRenderer:
   m_ObjectHideFlags: 0
