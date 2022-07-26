@@ -7,7 +7,8 @@ public class Ball : MonoBehaviour
 
     [SerializeField] private Transform block1;
     [SerializeField] private Transform block2;
-    [SerializeField] private float velocity;
+    [SerializeField] private float speed;
+    
     private int direction = -1;
     
     private Vector2 block1BoundryBottom;
@@ -32,11 +33,11 @@ public class Ball : MonoBehaviour
     void Update()
     {
 
-        ballLeftStart = new Vector2(transform.position.x - .5f, transform.position.y);
-        ballLeftEnd = new Vector2(transform.position.x - .5f - Mathf.Abs(velocity) * Time.deltaTime, transform.position.y);
+        ballLeftStart = new Vector2(transform.position.x - .4f, transform.position.y);
+        ballLeftEnd = new Vector2(transform.position.x - .4f - speed * Time.deltaTime, transform.position.y);
 
-        ballRightStart = new Vector2(transform.position.x + .5f, transform.position.y);
-        ballRightEnd = new Vector2(transform.position.x + .5f + Mathf.Abs(velocity) * Time.deltaTime, transform.position.y);
+        ballRightStart = new Vector2(transform.position.x + .4f, transform.position.y);
+        ballRightEnd = new Vector2(transform.position.x + .4f + speed * Time.deltaTime, transform.position.y);
 
         block1BoundryBottom = new Vector2(block1.position.x + .5f, block1.position.y - 2);
         block1BoundryTop = new Vector2(block1.position.x + .5f, block1.position.y + 2);
@@ -44,32 +45,34 @@ public class Ball : MonoBehaviour
         block2BoundryBottom = new Vector2(block2.position.x - .5f, block2.position.y - 2);
         block2BoundryTop = new Vector2(block2.position.x - .5f, block2.position.y + 2);
 
-        if (velocity < 0)
+        if (direction < 0)
         {
 
-            if (Math2d.LineSegmentsIntersection(ballLeftStart, ballLeftEnd, block1BoundryBottom, block1BoundryTop))
+            if (Math2d.LineSegmentsIntersection(ballLeftStart, ballLeftEnd, block1BoundryBottom, block1BoundryTop, out Vector2 intersection))
             {
-                velocity = -velocity;
+                transform.position = new Vector3(intersection.x - .4f , intersection.y, 0);
+                direction = -direction;
             }
 
             else
             {
-                transform.position += Vector3.right * velocity * Time.deltaTime;
+                transform.position += Vector3.right * speed * Time.deltaTime * direction;
             }
 
         }
 
-        if (velocity > 0)
+        if (direction > 0)
         {
 
-            if (Math2d.LineSegmentsIntersection(ballRightStart, ballRightEnd, block2BoundryBottom, block2BoundryTop))
+            if (Math2d.LineSegmentsIntersection(ballRightStart, ballRightEnd, block2BoundryBottom, block2BoundryTop, out var intersection))
             {
-                velocity = -velocity;
+                transform.position = new Vector3(intersection.x + .4f, intersection.y, 0);
+                direction = -direction;
             }
 
             else
             {
-                transform.position += Vector3.right * velocity * Time.deltaTime;
+                transform.position += Vector3.right * speed * Time.deltaTime * direction;
             }
         }
 
