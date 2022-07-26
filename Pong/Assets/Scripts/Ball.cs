@@ -50,7 +50,7 @@ public class Ball : MonoBehaviour
 
             if (Math2d.LineSegmentsIntersection(ballLeftStart, ballLeftEnd, block1BoundryBottom, block1BoundryTop, out Vector2 intersection))
             {
-                transform.position = new Vector3(intersection.x - .4f , intersection.y, 0);
+                //transform.position = new Vector3(intersection.x - .4f , intersection.y, 0);
                 direction = -direction;
             }
 
@@ -66,7 +66,7 @@ public class Ball : MonoBehaviour
 
             if (Math2d.LineSegmentsIntersection(ballRightStart, ballRightEnd, block2BoundryBottom, block2BoundryTop, out var intersection))
             {
-                transform.position = new Vector3(intersection.x + .4f, intersection.y, 0);
+                //transform.position = new Vector3(intersection.x + .4f, intersection.y, 0);
                 direction = -direction;
             }
 
