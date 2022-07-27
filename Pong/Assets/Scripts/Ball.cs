@@ -8,7 +8,6 @@ public class Ball : MonoBehaviour
     [SerializeField] private Transform block1;
     [SerializeField] private Transform block2;
     [SerializeField] private float speed;
-    
     private int direction = -1;
     
     private Vector2 block1BoundryBottom;
@@ -22,8 +21,9 @@ public class Ball : MonoBehaviour
     
     private Vector2 ballRightStart;
     private Vector2 ballRightEnd;
-    
+
     private UIController uiCotroller;
+    
     
     void Start()
     {
@@ -44,13 +44,13 @@ public class Ball : MonoBehaviour
 
         block2BoundryBottom = new Vector2(block2.position.x - .5f, block2.position.y - 2);
         block2BoundryTop = new Vector2(block2.position.x - .5f, block2.position.y + 2);
-
+        
+        
         if (direction < 0)
         {
 
             if (Math2d.LineSegmentsIntersection(ballLeftStart, ballLeftEnd, block1BoundryBottom, block1BoundryTop, out Vector2 intersection))
             {
-                //transform.position = new Vector3(intersection.x - .4f , intersection.y, 0);
                 direction = -direction;
             }
 
@@ -66,7 +66,6 @@ public class Ball : MonoBehaviour
 
             if (Math2d.LineSegmentsIntersection(ballRightStart, ballRightEnd, block2BoundryBottom, block2BoundryTop, out var intersection))
             {
-                //transform.position = new Vector3(intersection.x + .4f, intersection.y, 0);
                 direction = -direction;
             }
 
@@ -75,7 +74,7 @@ public class Ball : MonoBehaviour
                 transform.position += Vector3.right * speed * Time.deltaTime * direction;
             }
         }
-
+        
 
     }
     
