@@ -952,12 +952,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945719501}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dca0373d24db3fa478fe506e47541687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 5000
+  velocity: 5
   block1: {fileID: 1887085291}
   block2: {fileID: 1390294315}
   imagePrefab: {fileID: 129592523695848254, guid: 5ed4a657b838af64592ff338adbc0298, type: 3}
@@ -968,13 +968,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945719501}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16727455a1a7d6049817659a9ac411bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   velocityDir: {x: 1, y: 0}
-  speed: 500
+  speed: 2
   block1: {fileID: 1887085291}
   block2: {fileID: 1390294315}
   bounds: []

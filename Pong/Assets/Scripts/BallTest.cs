@@ -11,14 +11,13 @@ public class BallTest : MonoBehaviour
     [SerializeField] private Transform block2;
 
     public List<Vector2> bounds = new List<Vector2>();
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -29,7 +28,7 @@ public class BallTest : MonoBehaviour
         var pos = (Vector2)transform.position;
         var movement = velocityDir * speed * Time.deltaTime;
 
-        var newPos =pos+ movement;
+        var newPos = pos+ movement;
         if (FindIntersect(pos, pos+movement, out var intersection))
         {
             velocityDir.x = -velocityDir.x;
@@ -38,8 +37,7 @@ public class BallTest : MonoBehaviour
 
         transform.position = newPos;
     }
-
-
+    
     public bool FindIntersect(Vector3 ballCenter, Vector3 ballMovement,out Vector2 intersection)
     {
         for (int i = 0; i < bounds.Count; i+=2)
@@ -58,9 +56,10 @@ public class BallTest : MonoBehaviour
     {
         Vector3 upPoint = wall.position;
         upPoint.y += wall.localScale.y / 2;
-        upPoint.x += wall.localScale.y / 2;
+        upPoint.x += wall.localScale.x;
         
         Vector3 downPoint = wall.position;
+        downPoint.x += wall.localScale.x;
         downPoint.y -= wall.localScale.y / 2;
         
         bounds.Add(upPoint);
